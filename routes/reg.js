@@ -136,11 +136,10 @@ router.post('/reg-std',function(req,res,next){
    
    //5. delete the data
    //url: http://localhost:2020/reg/delete-std/5
-  //method: put
+  //method: delete
    
   router.delete('/delete-std/:id',function(req,res,next){
-    var id=req.params.id;
-    
+    var id=objectId(req.params.id);
 
     getCon(res,function(db){
       var collection=db.collection('students');
