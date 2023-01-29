@@ -3,7 +3,7 @@ var router = express.Router();
 var mongodb= require('mongodb');
 var getCon=require('./common/getCon');
 var jwt=require('jsonwebtoken');
-const validateToken = require('./common/validateToken');
+var validateToken = require('./common/validateToken');
 var objectId=mongodb.ObjectId
 
 
@@ -113,7 +113,7 @@ router.post('/reg-std',function(req,res,next){
    //url: http://localhost:2020/reg/update-std/5
   //method: put
    
-   router.put('/update-std/:id',function(req,res,next){
+   router.put('/update-std/:id',validateToken,function(req,res,next){
     var id=req.params.id;
     var data=req.body.payload;
 
@@ -138,7 +138,7 @@ router.post('/reg-std',function(req,res,next){
    //url: http://localhost:2020/reg/delete-std/5
   //method: delete
    
-  router.delete('/delete-std/:id',function(req,res,next){
+  router.delete('/delete-std/:id',validateToken,function(req,res,next){
     var id=objectId(req.params.id);
 
     getCon(res,function(db){
