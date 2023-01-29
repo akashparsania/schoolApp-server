@@ -4,7 +4,7 @@ var mongodb= require('mongodb');
 var getCon=require('./common/getCon');
 var jwt=require('jsonwebtoken');
 const validateToken = require('./common/validateToken');
-
+var objectId=mongodb.ObjectId
 
 
 // 1. get all collections from db
@@ -63,7 +63,7 @@ router.post('/reg-std',function(req,res,next){
   //method: get
 
   router.get('/get-std-by-id',validateToken,function(req,res,next){
-   var id= req.query.id;
+   var id= objectId(req.query.id);
    getCon(res,function(db){
     var collection=db.collection('students')
     collection.findOne({_id:id})

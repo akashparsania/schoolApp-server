@@ -1,6 +1,6 @@
 var jwt=require('jsonwebtoken');
 function validateToken(req,res,next){
-var token=req.headers.authorization;
+var token=req.headers.Authorization;
 console.log('checking token...')
 if(token){
   jwt.verify(token,'appToken', function(e,s){
