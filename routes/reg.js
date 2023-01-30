@@ -114,7 +114,7 @@ router.post('/reg-std',function(req,res,next){
   //method: put
    
    router.put('/update-std/:id',validateToken,function(req,res,next){
-    var id=req.params.id;
+    var id=objectId(req.params.id);
     var data=req.body.payload;
 
     getCon(res,function(db){
